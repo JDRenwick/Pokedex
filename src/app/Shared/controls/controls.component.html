@@ -3,20 +3,20 @@
     <button class="search" routerLink="search"></button>
   </div>
   <div class="box-align">
-    <button class="camera"></button>
+    <button class="camera" routerLink="bioPage"></button>
     <button class="speech"></button>
     <div class="green-box"></div>
   </div>
 </div>
 <div class="arrows">
   <div class="center">
-    <button class="up" (click)="up()"></button>
+    <button class="up" (click)="arrowClick(arrowControls?.up?.value)"></button>
   </div>
   <div class="space-between">
-    <button class="left" (click)="left()"></button>
-    <button class="right" (click)="right()"></button>
+    <button class="left" (click)="arrowClick(arrowControls?.left?.value)"></button>
+    <button class="right" (click)="arrowClick(arrowControls?.right?.value)"></button>
   </div>
     <div class="center">
-      <button class="down" (click)="down()"></button>
+      <button class="down" (click)="arrowClick(arrowControls?.down?.value)"></button>
     </div>
 </div>

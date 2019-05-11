@@ -1,6 +1,6 @@
-<h3>Abilities</h3>
-<p class="ability" *ngFor="let ability of pokemonBioPage?.abilities"><strong>{{ability?.ability?.name}}</strong> <span *ngIf="ability?.is_hidden">- HIDDEN</span></p>
-    <h3>Stats</h3>
-    <div *ngFor="let stat of pokemonBioPage?.stats">
-        <p>{{stat.stat.name}} - <strong>{{stat.base_stat}}</strong></p>
-    </div>
+<app-abilities *ngIf="currentInfo === 'abilities'"
+                [abilities]="abilities"></app-abilities>
+<app-stats *ngIf="currentInfo === 'stats'"
+                [stats]="stats"></app-stats>
+<app-evolution *ngIf="currentInfo === 'evolution'"></app-evolution>
+<app-forms *ngIf="currentInfo === 'forms'"></app-forms>

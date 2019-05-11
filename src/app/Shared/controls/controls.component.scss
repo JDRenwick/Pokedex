@@ -62,7 +62,7 @@
     .center {
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         button {
             width: 23%;
             padding-top: 36%;
@@ -71,7 +71,7 @@
     .space-between {
         display: flex;
         justify-content: space-between;
-        align-items: start;
+        align-items: flex-start;
 
         button {
             width: 38%;

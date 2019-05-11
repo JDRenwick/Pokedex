@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BioPageService } from '../bio-page.service';
-import { Observable, BehaviorSubject, Subject, Subscription } from 'rxjs';
-import { Type } from 'src/app/Models/type';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Arrows } from 'src/app/Models/arrows';
+import { Arrow } from 'src/app/Models/arrow';
 import { Sprite } from 'src/app/Models/sprite';
+import { ControlsService } from 'src/app/Shared/controls.service';
 
 @Component({
   selector: 'app-bio-page-layout',
@@ -11,18 +13,31 @@ import { Sprite } from 'src/app/Models/sprite';
 })
 export class BioPageLayoutComponent implements OnInit {
 
+  private arrowControls: Arrows;
+
   private pokemonBioPageSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   readonly pokemonBioPageObservable: Observable<any> = this.pokemonBioPageSubject.asObservable();
 
   private spritesSubject: BehaviorSubject<Sprite[]> = new BehaviorSubject<Sprite[]>(null);
   readonly spritesObservable: Observable<Sprite[]> = this.spritesSubject.asObservable();
 
-  constructor(private bioPageService: BioPageService) { }
+
+  private currentViewSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  readonly currentViewObservable: Observable<string> = this.currentViewSubject.asObservable();
+
+  constructor(private bioPageService: BioPageService,
+              private controlsService: ControlsService) { }
 
   ngOnInit() {
     this.bioPageService.getPokemonBioPage().subscribe(pokemonBioPage => {
       this.setSprites(pokemonBioPage.sprites);
       this.pokemonBioPageSubject.next(pokemonBioPage);
+      this.setArrowControls();
+    });
+
+    this.controlsService.getArrowClicked().subscribe(value => {
+      this.currentViewSubject.next(value);
+      console.log(value)
     });
   }
 
@@ -42,6 +57,14 @@ export class BioPageLayoutComponent implements OnInit {
     }
 
     this.spritesSubject.next(formattedSprites);
+  }
+
+  setArrowControls() {
+    this.arrowControls = new Arrows(new Arrow("Evolution", "evolution"), 
+                                    new Arrow("Stats", "stats"), 
+                                    new Arrow("Abilities", "abilities"), 
+                                    new Arrow("Forms", "forms"))
+    this.controlsService.setArrowControls(this.arrowControls);
   }
 
 

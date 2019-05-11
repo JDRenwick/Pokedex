@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Arrows } from 'src/app/Models/arrows';
+import { Arrow } from 'src/app/Models/arrow';
 
 @Component({
   selector: 'app-controls',
@@ -17,17 +18,8 @@ export class ControlsComponent implements OnInit {
   ngOnInit() {
   }
 
-  up() {
-    this.arrow.emit("up");
-  }
-  left() {
-    this.arrow.emit("left");
-  }
-  right() {
-    this.arrow.emit("right");
-  }
-  down() {
-    this.arrow.emit("down");
+  arrowClick(value: string) {
+    this.arrow.emit(value);
   }
 
 }

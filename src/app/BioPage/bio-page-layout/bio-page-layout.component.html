@@ -4,6 +4,9 @@
                [id]="(pokemonBioPageObservable | async)?.id"
                [types]="(pokemonBioPageObservable | async)?.types"></app-title>
     <app-sprites [sprites]="spritesObservable | async"></app-sprites>
+    <app-information [currentInfo]="currentViewObservable | async"
+    [abilities]="(pokemonBioPageObservable | async)?.abilities"
+    [stats]="(pokemonBioPageObservable | async)?.stats"></app-information>
 </ng-container>
 <ng-template #loading>
         <app-loading></app-loading>

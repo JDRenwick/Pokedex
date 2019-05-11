@@ -3,7 +3,7 @@ export class Arrow {
     value: string;
 
     constructor(name: string, value: string) {
-        this.name;
-        this.value;
+        this.name = name;
+        this.value = value;
     }
 }

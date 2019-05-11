@@ -7,9 +7,9 @@ export class Arrows {
     down: Arrow;
 
     constructor(up: Arrow, left: Arrow, right: Arrow,  down: Arrow) {
-        this.up;
-        this.left;
-        this.right;
-        this.down;
+        this.up = up;
+        this.left = left;
+        this.right = right;
+        this.down = down;
     }
 }

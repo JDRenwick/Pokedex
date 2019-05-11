@@ -1,3 +1,2 @@
-<p>
-  abilities works!
-</p>
+<h3>Abilities</h3>
+<p class="ability" *ngFor="let ability of abilities"><strong>{{ability?.ability?.name}}</strong> <span *ngIf="ability?.is_hidden">- HIDDEN</span></p>

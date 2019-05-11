@@ -2,3 +2,8 @@ h2, h3 {
     margin: 0;
     text-transform: capitalize;
 }
+
+:host {
+    grid-column: 2 / span 2;
+    grid-row: 2 / 3;
+}

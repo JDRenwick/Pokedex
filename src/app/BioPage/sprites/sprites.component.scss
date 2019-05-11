@@ -6,3 +6,8 @@ app-sprite {
 app-sprite.visible {
     opacity: 1;
 }
+
+:host {
+    grid-column: 2;
+    grid-row: 3;
+}
