@@ -1,0 +1,42 @@
+/* Centers the svg using css grid */
+:host {    
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content: space-around;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 42px 0 0 34px;
+    overflow: hidden;
+  }
+  
+  /* Adds a 1 second "wobble" animation that repeats 4 times. */
+  .ball {
+    animation: wobble 1s linear infinite;
+  /*  Helps transforms on svg animations work as intended  */
+    transform-origin: 50% 100%;
+    transform-box: fill-box;
+  }
+  
+  /* Adds a 1 second "flash" animation that repeats 4 times. */
+  .button {
+    animation: flash 1s linear infinite;
+  }
+  
+  @keyframes wobble {
+    10% {
+      transform: rotate(-5deg)
+    }
+    30% {
+      transform: rotate(5deg)
+    }
+    45% {
+      transform: rotate(0deg)
+    }
+  }
+  
+  @keyframes flash {
+    100% {
+      fill: rgba(255, 0, 0, 0.4)
+    }
+  }

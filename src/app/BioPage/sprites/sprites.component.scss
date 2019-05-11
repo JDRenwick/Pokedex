@@ -1,0 +1,8 @@
+app-sprite {
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s ease-out opacity;
+}
+app-sprite.visible {
+    opacity: 1;
+}

@@ -1,0 +1,57 @@
+.background {
+    background: red;
+    border: 1px solid black;
+    height: 100vh;
+    max-width: 85vh;
+    width: 100vw;
+    display: block;
+    position: relative;
+    margin: auto;
+    overflow: visible;
+}
+
+.inside {
+    padding: 5vh 40px;
+    box-sizing: border-box;
+    border: 5px red solid;
+    border-top: none;
+    box-shadow: inset 1px 1px 3px 5px darkred;
+
+    .center {
+        display: block;
+        position: relative;
+        background: white;
+        padding: 5vh;
+        height: 50vh;
+        border: 3px outset rgba(220, 220, 220, 0.6);
+        border-bottom-left-radius: 80px;
+        box-sizing: border-box;
+
+        .screen-outer {
+            display: block;
+            background: lightgray;
+            border: 1px solid black;
+            width: 100%;
+            height: 40vh;
+            padding: 2vh;
+            box-sizing: border-box;
+            border-radius: 25px;
+
+            .screen-inner {
+                display: block;
+                background: #E9F7FF;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                overflow-y: scroll;
+                border-radius: 20px;
+                padding: 1vh;
+            }
+        }
+    }
+
+    .base {
+        height: 29vh;
+        box-sizing: border-box;
+    }
+}

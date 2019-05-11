@@ -1,0 +1,6 @@
+<h3>Abilities</h3>
+<p class="ability" *ngFor="let ability of pokemonBioPage?.abilities"><strong>{{ability?.ability?.name}}</strong> <span *ngIf="ability?.is_hidden">- HIDDEN</span></p>
+    <h3>Stats</h3>
+    <div *ngFor="let stat of pokemonBioPage?.stats">
+        <p>{{stat.stat.name}} - <strong>{{stat.base_stat}}</strong></p>
+    </div>

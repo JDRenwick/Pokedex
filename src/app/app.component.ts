@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PokedexApp';
+
+  isOpen: boolean = false;
+
+  open(shouldOpen: boolean) {
+    this.isOpen = shouldOpen;
+  }
 }
