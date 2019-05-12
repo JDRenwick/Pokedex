@@ -16,12 +16,10 @@ export class ControlsLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.controlsService.getArrowControls().subscribe(arrowControls => {
-      console.log(arrowControls);
       this.arrowControls = arrowControls;
     });
   }
   arrowClick(value: string) {
-    console.log(value);
     this.controlsService.arrowClicked(value);
   }
 

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BioPageService } from '../bio-page.service';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Arrows } from 'src/app/Models/arrows';
 import { Arrow } from 'src/app/Models/arrow';
 import { Sprite } from 'src/app/Models/sprite';
 import { ControlsService } from 'src/app/Shared/controls.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-bio-page-layout',
@@ -13,34 +14,40 @@ import { ControlsService } from 'src/app/Shared/controls.service';
 })
 export class BioPageLayoutComponent implements OnInit {
 
+  gettingInfo: boolean = true;
+  pokemonBioPage;
+  sprites: Sprite[];
+  currentView: string;
+
   private arrowControls: Arrows;
 
-  private pokemonBioPageSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  readonly pokemonBioPageObservable: Observable<any> = this.pokemonBioPageSubject.asObservable();
-
-  private spritesSubject: BehaviorSubject<Sprite[]> = new BehaviorSubject<Sprite[]>(null);
-  readonly spritesObservable: Observable<Sprite[]> = this.spritesSubject.asObservable();
-
-
-  private currentViewSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  readonly currentViewObservable: Observable<string> = this.currentViewSubject.asObservable();
 
   constructor(private bioPageService: BioPageService,
+              private route: ActivatedRoute,
               private controlsService: ControlsService) { }
 
   ngOnInit() {
-    this.bioPageService.getPokemonBioPage().subscribe(pokemonBioPage => {
-      this.setSprites(pokemonBioPage.sprites);
-      this.pokemonBioPageSubject.next(pokemonBioPage);
-      this.setArrowControls();
-    });
+    this.gettingInfo = true;
+
+    const id = this.route.snapshot.paramMap.get('id');
+    const name = this.route.snapshot.paramMap.get('name');
+
+    if (!!id) {
+      this.bioPageService.getPokemonBioPageById(id).subscribe(pokemonBioPage => this.setBioPage(pokemonBioPage));
+    } else if (!!name) {
+      this.bioPageService.getPokemonBioPageByName(name).subscribe(pokemonBioPage => this.setBioPage(pokemonBioPage));
+    }
 
     this.controlsService.getArrowClicked().subscribe(value => {
-      this.currentViewSubject.next(value);
-      console.log(value)
+      this.currentView = value;
     });
   }
-
+  setBioPage(pokemonBioPage) {
+    this.setSprites(pokemonBioPage.sprites);
+    this.pokemonBioPage = pokemonBioPage;
+    this.setArrowControls();
+    this.gettingInfo = false;
+  }
   setSprites(sprites: any) {
     const formattedSprites: Sprite[] = [];
     if (!!sprites.front_female) {
@@ -56,7 +63,7 @@ export class BioPageLayoutComponent implements OnInit {
       formattedSprites.push(new Sprite("Shiny", null, sprites.front_shiny));
     }
 
-    this.spritesSubject.next(formattedSprites);
+    this.sprites = formattedSprites;
   }
 
   setArrowControls() {

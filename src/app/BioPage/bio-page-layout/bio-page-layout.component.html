@@ -1,12 +1,12 @@
 
-<ng-container *ngIf="pokemonBioPageObservable; else loading">
-    <app-title [name]="(pokemonBioPageObservable | async)?.name"
-               [id]="(pokemonBioPageObservable | async)?.id"
-               [types]="(pokemonBioPageObservable | async)?.types"></app-title>
-    <app-sprites [sprites]="spritesObservable | async"></app-sprites>
-    <app-information [currentInfo]="currentViewObservable | async"
-    [abilities]="(pokemonBioPageObservable | async)?.abilities"
-    [stats]="(pokemonBioPageObservable | async)?.stats"></app-information>
+<ng-container *ngIf="!gettingInfo && !!pokemonBioPage && !!sprites; else loading">
+    <app-title [name]="pokemonBioPage?.name"
+               [id]="pokemonBioPage?.id"
+               [types]="pokemonBioPage?.types"></app-title>
+    <app-sprites [sprites]="sprites"></app-sprites>
+    <app-information [currentInfo]="currentView"
+    [abilities]="pokemonBioPage?.abilities"
+    [stats]="pokemonBioPage?.stats"></app-information>
 </ng-container>
 <ng-template #loading>
         <app-loading></app-loading>

@@ -28,7 +28,6 @@ export class ControlsService {
   }
 
   arrowClicked(value: string) {
-    console.log(value);
     this.arrowClickedSubject.next(value);
   }
 }

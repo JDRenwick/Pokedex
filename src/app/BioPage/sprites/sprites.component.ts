@@ -16,6 +16,8 @@ export class SpritesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.sprites)
+    console.log(this.sprites.length)
     this.currentSprite = this.sprites[this.index];
     
     setInterval(() => {

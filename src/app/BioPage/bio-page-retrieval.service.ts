@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -699,13 +700,14 @@ export class BioPageRetrievalService {
     "weight": 40
   }
 
-  constructor() { }
+  private url: string = "https://pokeapi.co/api/v2/pokemon/";
 
-  getBioPage(): Observable<any> {
-    if (this.pokemonBioPage) {
-      return of(this.pokemonBioPage);
-    } else {
-      return of(this.pokemonBioPage);
-    }
+  constructor(private http: HttpClient) { }
+
+  getBioPageById(id: number): Observable<any> {
+    return this.http.get(`${this.url}${id}`);
+  }
+  getBioPageByName(name: string): Observable<any> {
+    return this.http.get(`${this.url}${name}`);
   }
 }

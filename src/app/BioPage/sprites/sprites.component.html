@@ -1,4 +1,4 @@
-<ng-container *ngIf="sprites">
+<ng-container *ngIf="!!sprites && sprites.length > 0">
   <app-sprite *ngFor="let sprite of sprites"
               [sprite]="sprite"
               [class.visible]="sprite === currentSprite"></app-sprite>

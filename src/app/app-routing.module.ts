@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BioPageLayoutComponent } from './BioPage/bio-page-layout/bio-page-layout.component';
+import { SearchLayoutComponent } from './Search/search-layout/search-layout.component';
 import { WelcomeComponent } from './Shared/welcome/welcome.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full' },
-  { path: 'bioPage', component: BioPageLayoutComponent }
+  { path: 'bio/name/:name', component: BioPageLayoutComponent },
+  { path: 'bio/number/:id', component: BioPageLayoutComponent },
+  { path: 'search', component: SearchLayoutComponent }
 ];
 
 @NgModule({
