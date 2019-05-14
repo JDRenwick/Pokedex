@@ -22,6 +22,7 @@ import { ControlsLayoutComponent } from './Shared/controls-layout/controls-layou
 import { WelcomeComponent } from './Shared/welcome/welcome.component';
 import { SearchLayoutComponent } from './Search/search-layout/search-layout.component';
 import { SearchComponent } from './Search/search/search.component';
+import { VoiceComponent } from './Voice/voice/voice.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SearchComponent } from './Search/search/search.component';
     ControlsLayoutComponent,
     WelcomeComponent,
     SearchLayoutComponent,
-    SearchComponent
+    SearchComponent,
+    VoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { SearchComponent } from './Search/search/search.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
