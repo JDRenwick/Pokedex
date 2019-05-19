@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BioPageRetrievalService } from './bio-page-retrieval.service';
-import { Subject, of, Subject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

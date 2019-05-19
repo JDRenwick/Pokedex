@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import annyang from "annyang";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-voice',
@@ -8,7 +9,7 @@ import annyang from "annyang";
 })
 export class VoiceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   commands = {
     'show me :pokemon': this.searchForPokemon,

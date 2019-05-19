@@ -33,7 +33,7 @@ export class BioPageLayoutComponent implements OnInit {
     const name = this.route.snapshot.paramMap.get('name');
 
     if (!!id) {
-      this.bioPageService.getPokemonBioPageById(id).subscribe(pokemonBioPage => this.setBioPage(pokemonBioPage));
+      this.bioPageService.getPokemonBioPageById(parseInt(id)).subscribe(pokemonBioPage => this.setBioPage(pokemonBioPage));
     } else if (!!name) {
       this.bioPageService.getPokemonBioPageByName(name).subscribe(pokemonBioPage => this.setBioPage(pokemonBioPage));
     }
