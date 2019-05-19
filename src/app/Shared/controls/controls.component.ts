@@ -22,4 +22,12 @@ export class ControlsComponent implements OnInit {
     this.arrow.emit(value);
   }
 
+  goToVoice() {
+    console.log("go to voice");
+  }
+
+  endVoice() {
+    console.log("end voice");
+  }
+
 }
